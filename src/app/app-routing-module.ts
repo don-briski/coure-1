@@ -3,10 +3,12 @@ import { RouterModule, Routes } from '@angular/router';
 import { TaskList } from './pages/task-list/task-list';
 
 const routes: Routes = [
+  { path: '', redirectTo: 'tasks', pathMatch: 'full' },
+  
   {path:'tasks', component: TaskList},
 
 
-  {path:'**', redirectTo:'home'}
+  {path:'**', redirectTo:'tasks'}
 ];
 
 @NgModule({
