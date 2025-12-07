@@ -24,6 +24,9 @@ section {
   .task-form {
     display: flex;
     flex-direction: column;
+    overflow: auto;
+    height: 550px;
+    padding: 0 10px
 
     label {
       font-size: 18px;

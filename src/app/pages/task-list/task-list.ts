@@ -71,7 +71,7 @@ export class TaskList implements OnInit {
       );
     }
 
-    this.dataSource.data = filteredTasks;
+    this.dataSource.data = this.sortTasksByRecent(filteredTasks);
 
     if (this.paginator) {
       this.paginator.firstPage();
@@ -85,6 +85,15 @@ export class TaskList implements OnInit {
   clearFilters() {
     this.filter = { priority: '', status: '' };
     this.applyFilters();
+  }
+
+  sortTasksByRecent(tasks: Task[]): Task[] {
+    return tasks.sort((a, b) => {
+      const dateA = new Date( a.createdAt ?? 0).getTime();
+      const dateB = new Date( b.createdAt ?? 0).getTime();
+
+      return dateB - dateA;
+    });
   }
 
   onPageChange(event: PageEvent) {

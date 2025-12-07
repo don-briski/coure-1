@@ -49,7 +49,8 @@ export class CreateTask {
         description: this.task.description,
         dueDate: new Date(this.task.dueDate),
         priority: this.task.priority,
-        status: this.task.status
+        status: this.task.status,
+        updateAt: new Date().toISOString()
       });
     }
   }
@@ -78,7 +79,16 @@ export class CreateTask {
         }
       });
     } else {
-      this.taskService.createTask(task).subscribe({
+          const newTask: Task = {
+      id: this.utils.generateId(),
+      title: formValue.title,
+      description: formValue.description,
+      dueDate: new Date(formValue.dueDate).toISOString(),
+      priority: formValue.priority,
+      status: formValue.status,
+      createdAt: new Date().toISOString(),
+    };
+      this.taskService.createTask(newTask).subscribe({
         next: () => {
           this.utils.showSuccess('Task created successfully');
           this.dialogRef.close('success');

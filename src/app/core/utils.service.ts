@@ -24,4 +24,8 @@ export class UtilService {
       verticalPosition: 'top',
     });
   }
+
+  generateId(): number {
+    return  Math.floor(Math.random() * 1000);
+  }
 }
