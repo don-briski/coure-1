@@ -2,10 +2,11 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, catchError, map, of, throwError } from 'rxjs';
 import { Task } from './model';
+import { environment } from '../../environments/environment';
 
 @Injectable({ providedIn: 'root' })
 export class TaskService {
-  private apiUrl = 'http://localhost:3000/tasks';
+  private apiUrl = environment.apiUrl;
   private storageKey = 'tm_tasks_v1';
   private tasks$ = new BehaviorSubject<Task[]>([]);
 
