@@ -1,0 +1,15 @@
+<section>
+  <div class="container">
+    <div class="icon-container">
+      <mat-icon color="warn">warning</mat-icon>
+    </div>
+    <h2 mat-dialog-title>{{ data.title || 'Confirm Action' }}</h2>
+    <mat-dialog-content>
+      <p>{{ data.message }}</p>
+    </mat-dialog-content>
+    <mat-dialog-actions align="center">
+      <button mat-button class="cancel" (click)="onCancel()">Cancel</button>
+      <button mat-raised-button class="accept"  (click)="onConfirm()">Confirm</button>
+    </mat-dialog-actions>
+  </div>
+</section>

@@ -1,0 +1,31 @@
+<section>
+  <div class="header-container">
+    <h2>View Task Details</h2>
+
+    <div class="close-icon">
+      <button mat-icon-button mat-dialog-close>
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+  </div>
+
+  <div class="main-container">
+    <div class="task-details">
+      <mat-card>
+        <mat-card-title>{{ data.taskData.title }}</mat-card-title>
+        <mat-card-content>
+          <p><strong>Description:</strong> {{ data.taskData.description }}</p>
+          <p>
+            <strong>Due Date:</strong>
+            {{ data.taskData.dueDate | date : 'shortDate' }}
+          </p>
+          <p><strong>Priority:</strong> {{ data.taskData.priority }}</p>
+          <p><strong>Status:</strong> {{ data.taskData.status }}</p>
+        </mat-card-content>
+        <!-- <mat-card-actions>
+          <button mat-button mat-dialog-close>Close</button>
+        </mat-card-actions> -->
+      </mat-card>
+    </div>
+  </div>
+</section>

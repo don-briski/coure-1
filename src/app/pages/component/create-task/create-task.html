@@ -1,0 +1,66 @@
+<section>
+  <div class="form-header">
+    <h2>{{ taskId ? "Edit Task Form" : " Create New Task" }}</h2>
+  </div>
+  <div class="form-container">
+    <p>Fill all inputs</p>
+    <form [formGroup]="form" (ngSubmit)="save()" class="task-form">
+      <mat-form-field>
+        <mat-label for="title">Title</mat-label>
+        <input
+          id="title"
+          matInput
+          formControlName="title"
+          placeholder="Enter title"
+        />
+        <mat-error *ngIf="form.get('title')?.invalid"
+          >Title is required</mat-error
+        >
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Description</mat-label>
+        <textarea
+          matInput
+          formControlName="description"
+          placeholder="Enter task description"
+        ></textarea>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Due date</mat-label>
+        <input
+          matInput
+          [matDatepicker]="picker"
+          formControlName="dueDate"
+          placeholder="Select a date"
+        />
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Priority</mat-label>
+        <mat-select formControlName="priority">
+          <mat-option [value]="item" *ngFor="let item of PriorityOptions">
+            {{ item }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Status</mat-label>
+        <mat-select formControlName="status">
+          <mat-option [value]="item" *ngFor="let item of StatusOptions">{{
+            item
+          }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <button class="accept-button" type="submit">Save</button>
+      <button class="reject-button" type="button" mat-dialog-close="">
+        Cancel
+      </button>
+    </form>
+  </div>
+</section>
