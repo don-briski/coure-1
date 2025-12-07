@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: tasks-json-server
+    runtime: node
+    plan: free
+    buildCommand: "npm install"
+    startCommand: "npx json-server --watch db.json --port 3000 --host 0.0.0.0"
+    autoDeploy: true
+    envVars:
+      - key: PORT
+        value: 3000
+
+  - type: web
+    name: tasks-angular-frontend
+    runtime: static
+    buildCommand: "npm install && npm run build"
+    staticPublishPath: "dist/coure-assessment/browser"
+    autoDeploy: true
